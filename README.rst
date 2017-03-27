@@ -3,14 +3,20 @@ SVD-Python
 ==========
 
 
-Add a short description here!
+Projekt na zajęcia "Język Python w uczeniu maszynowym" - algorytm SVD
 
 
-Description
-===========
+Opis
+====
 
-A longer description of your project goes here...
+Projekt będzie polegał na implementacji algorytmu SVD (Singular Value Decomposition) czyli Rozkładu macierzy według wartości osobliwych.
 
+Grupa
+=====
+
+Martyna Mazurkiewicz
+Mateusz Lepa
+Kamil Zawilski
 
 Note
 ====
