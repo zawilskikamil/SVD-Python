@@ -7,6 +7,7 @@ def do_stuff(matrix):
 
     # 1. transponujemy macierz
     T = np.transpose(A)
+    # T= [list(i) for i in zip(*A)] Można tez tak bez numpy
 
     # 2. liczymy AT (AAT) i TA (ATA)
     AT = np.dot(A,T)
