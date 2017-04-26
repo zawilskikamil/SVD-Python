@@ -23,8 +23,8 @@ class niewiadoma():
 
 
 class wielomian():
-    def __init__(self):
-        self.liczby = []
+    def __init__(self, liczby = []):
+        self.liczby = liczby
 
     def __add__(self, other):
         if (isinstance(other, niewiadoma)):
@@ -32,6 +32,12 @@ class wielomian():
         elif (isinstance(other, wielomian)):
             return self.dodaj_wielomian(other)
 
+    def __mul__(self, other):
+        if (isinstance(other, niewiadoma)):
+            return self.pomnoz_przez_liczbe(other)
+        elif (isinstance(other, wielomian)):
+            return self.pomnoz_przez_wielomian(other)
+            pass
 
     def dodaj_liczbe(self, niewiadoma):
         kopia = copy.deepcopy(self)
@@ -52,6 +58,21 @@ class wielomian():
             kopia = kopia.dodaj_liczbe(w)
         return kopia
 
+    def pomnoz_przez_liczbe(self, niewiadoma):
+        kopia = copy.deepcopy(self)
+        l = []
+        for w in kopia.liczby:
+            l.append(w * niewiadoma)
+        return wielomian(l)
+
+    def pomnoz_przez_wielomian(self, inny_wielomian):
+        kopia = copy.deepcopy(self)
+        nowa = wielomian()
+        for w in inny_wielomian.liczby:
+            nowa = nowa + (kopia.pomnoz_przez_liczbe(w))
+        return nowa
+
+
     def __str__(self):
         s = ""
         for w in self.liczby:
@@ -65,7 +86,6 @@ w = w + n
 n2 = niewiadoma(2, 1)
 n3 = niewiadoma(1, 2)
 w = w + n2
-w = w + n3
 print(w)
-w = w + w
+w = w * w * niewiadoma(2,0)
 print(w)
