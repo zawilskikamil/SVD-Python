@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-A = [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]
-
-=======
-A = [[1,2,3],[1,2,3],[1,2,3]]
->>>>>>> Stashed changes
+A = [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
 
 def transpozycja(macierz):
     transponowana = [list(i) for i in zip(*macierz)]
@@ -20,7 +15,6 @@ def mnozenie(macierz_A, macierz_B):
         print("Nie można mnożyć macierzy, ZŁE WYMIARY")
         return
 
-<<<<<<< Updated upstream
     wynik = [[0 for row in range(columna_B)] for col in range(wiersz_A)]
 
     for i in range(wiersz_A):
@@ -28,11 +22,9 @@ def mnozenie(macierz_A, macierz_B):
             for k in range(columna_A):
                 wynik[i][j] += macierz_A[i][k] * macierz_B[k][j]
     return wynik
-=======
-print(mnozenie(A, A))
->>>>>>> Stashed changes
 
-=====
+print (mnozenie(A, A))
+
 
 def getMatrixMinor(m,i,j):
     return [row[:j] + row[j+1:] for row in (m[:i]+m[i+1:])]

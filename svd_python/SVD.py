@@ -1,4 +1,3 @@
-import numpy as np
 from svd_python.common import funkcje
 
 A = [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
@@ -8,7 +7,7 @@ def validate(matrix):
     return False
 
 
-def do_stuff(matrix):
+def daj_nam_wynik(matrix):
     # jakaś walidacja czy matrix to macierz
     if not validate(matrix):
         pass
@@ -36,4 +35,4 @@ def do_stuff(matrix):
     # 9.
 
 
-do_stuff(A)
+daj_nam_wynik(A)
