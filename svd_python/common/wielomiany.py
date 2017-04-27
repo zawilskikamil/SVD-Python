@@ -6,17 +6,39 @@ class niewiadoma():
         self.n = n
 
     def __add__(self, other):
+        if (isinstance(other, int)):
+            other = niewiadoma(other, 0)
+
         if (isinstance(other, niewiadoma)):
             if (self.n == other.n):
                 return niewiadoma(self.a + other.a, self.n)
             else:
                 w = wielomian()
-                w.dodaj_liczbe(self)
-                w.dodaj_liczbe(other)
+                w = w.dodaj_liczbe(self)
+                w = w.dodaj_liczbe(other)
                 return w
+        elif (isinstance(other, wielomian)):
+            return other + self
+
+    def __radd__(self, other):
+        return self + other
+
+    def __sub__(self, other):
+        if (isinstance(other, int)):
+            other = niewiadoma(other, 0)
+        kopia = copy.deepcopy(self)
+        return kopia + (other * (niewiadoma(-1, 0)))
 
     def __mul__(self, other):
-        return niewiadoma(self.a * other.a, self.n + other.n)
+        if (isinstance(other, int)):
+            other = niewiadoma(other, 0)
+        if (isinstance(other, niewiadoma)):
+            return niewiadoma(self.a * other.a, self.n + other.n)
+        elif (isinstance(other, wielomian)):
+            return other * self
+
+    def __rmul__(self, other):
+        return self * other;
 
     def __str__(self):
         return str(self.a) + 'x^' + str(self.n)
@@ -26,13 +48,29 @@ class wielomian():
     def __init__(self, liczby = []):
         self.liczby = liczby
 
+    def __sub__(self, other):
+        kopia = copy.deepcopy(self)
+        return kopia + (other * (niewiadoma(-1, 0)))
+
     def __add__(self, other):
+        if (isinstance(other, int)):
+            other = niewiadoma(other, 0)
+
         if (isinstance(other, niewiadoma)):
             return self.dodaj_liczbe(other)
         elif (isinstance(other, wielomian)):
             return self.dodaj_wielomian(other)
 
+    def __radd__(self, other):
+        return self + other
+
+    def __rmul__(self, other):
+        return self * other
+
     def __mul__(self, other):
+        if (isinstance(other, int)):
+            other = niewiadoma(other, 0)
+
         if (isinstance(other, niewiadoma)):
             return self.pomnoz_przez_liczbe(other)
         elif (isinstance(other, wielomian)):
@@ -72,20 +110,21 @@ class wielomian():
             nowa = nowa + (kopia.pomnoz_przez_liczbe(w))
         return nowa
 
+    # zwraca liste wspolczynnikow
+    # odpowiednio dla ax^0 + bx^1 + cx^2 + ...
+    #  [a,b,c]
+    def daj_wspolczynniki(self):
+        najwiekszy = 0;
+        for w in self.liczby:
+            if najwiekszy < w.n:
+                najwiekszy = w.n
+        wsp = [0] * (najwiekszy + 1)
+        for w in  self.liczby:
+            wsp[w.n] = w.a
+        return wsp
 
     def __str__(self):
         s = ""
         for w in self.liczby:
             s += " + " + str(w)
         return s
-
-n = niewiadoma(2, 0)
-print(n)
-w = wielomian()
-w = w + n
-n2 = niewiadoma(2, 1)
-n3 = niewiadoma(1, 2)
-w = w + n2
-print(w)
-w = w * w * niewiadoma(2,0)
-print(w)

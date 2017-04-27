@@ -36,5 +36,5 @@ def getMatrixDeternminant(m):
 
     determinant = 0
     for c in range(len(m)):
-        determinant += ((-1)**c)*m[0][c]*getMatrixDeternminant(getMatrixMinor(m,0,c))
+        determinant = determinant + ((-1)**c)*m[0][c]*getMatrixDeternminant(getMatrixMinor(m,0,c))
     return determinant
