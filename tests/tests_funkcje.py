@@ -1,12 +1,5 @@
 import unittest
-from svd_python.common.funkcje import transpozycja, mnozenie
-
-
-# class TestStringMethods(unittest.TestCase):
-#
-#     def test_upper(self):
-#         self.assertEqual('foo'.upper(), 'FOO')
-
+from svd_python.common.funkcje import transpozycja, mnozenie, getMatrixDeternminant
 
 
 class TestTranspozycja(unittest.TestCase):
@@ -17,13 +10,17 @@ class TestTranspozycja(unittest.TestCase):
         self.assertEqual(transpozycja(XX), wynik, "Źle odwrócona macierz" )
 
 
-#class TestMnozenie(unittest.TestCase):
-
     def test_mnozenie(self):
         A1 = [[1,2,3],[4,5,6],[7,8,9]]
         A2 = [[1,2,3],[4,5,6],[7,8,9]]
         wynik = [[30, 36, 42], [66, 81, 96], [102,126, 150]]
         self.assertEquals(mnozenie(A1,A2),wynik, "Zły wynik mnożenia macierzy" )
+
+    def test_wyznacznik(self):
+        A = [[5,1,3,3],[32,3,9,9],[6,6,7,8],[4,-1,-2,-9]]
+        wynik = -292
+        self.assertEquals(getMatrixDeternminant(A), wynik, "Zły wyznacznik macierzy")
+
 
 if __name__ == '__main__':
     unittest.main()
