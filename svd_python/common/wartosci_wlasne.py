@@ -5,9 +5,9 @@ A = [[1,2,3],[4,1,4],[3,2,3]]
 
 def daj(macierz):
     m = stworz_macierz_wielomianow(macierz)
-    print(funkcje.getMatrixDeternminant(m))
+    print(funkcje.oblicz_wyznacznik(m))
     m = odejmij_i_lambda(m)
-    w = funkcje.getMatrixDeternminant(m)
+    w = funkcje.oblicz_wyznacznik(m)
     print(w)
     print(w.daj_wspolczynniki())
 

@@ -1,5 +1,5 @@
 import unittest
-from svd_python.common.funkcje import transpozycja, mnozenie, getMatrixDeternminant
+from svd_python.common.funkcje import transpozycja, mnozenie, oblicz_wyznacznik
 
 
 class TestTranspozycja(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestTranspozycja(unittest.TestCase):
     def test_wyznacznik(self):
         A = [[5, 1, 3, 3], [32, 3, 9, 9], [6, 6, 7, 8], [4, -1, -2, -9]]
         wynik = -1292
-        self.assertEqual(getMatrixDeternminant(A), wynik, "Zły wyznacznik macierzy")
+        self.assertEqual(oblicz_wyznacznik(A), wynik, "Zły wyznacznik macierzy")
 
 
 if __name__ == '__main__':
