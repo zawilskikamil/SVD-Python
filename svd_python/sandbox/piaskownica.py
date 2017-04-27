@@ -27,3 +27,5 @@ print(d)
 coeff = [1,2,2]
 d = numpy.roots(coeff)
 print(d)
+
+numpy.linalg.cond([[1,2],[1,2]])

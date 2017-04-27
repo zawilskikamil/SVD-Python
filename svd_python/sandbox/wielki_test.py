@@ -1,7 +1,7 @@
-from svd_python.common import wartosci_wlasne
+from svd_python.common import wektory_wlasne
 
 
 
 A = [[3,2],[4,1]]
 
-print(wartosci_wlasne.podaj(A))
+print(wektory_wlasne.daj(A))
