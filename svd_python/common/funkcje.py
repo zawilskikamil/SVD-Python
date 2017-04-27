@@ -23,7 +23,6 @@ def mnozenie(macierz_A, macierz_B):
                 wynik[i][j] += macierz_A[i][k] * macierz_B[k][j]
     return wynik
 
-print (mnozenie(A, A))
 
 
 def getMatrixMinor(m,i,j):
