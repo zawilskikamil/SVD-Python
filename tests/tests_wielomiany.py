@@ -8,7 +8,6 @@ class TestWektoryWlasne(unittest.TestCase):
         pass
 
 
-
     def test_wielomian(self):
         pass
 
