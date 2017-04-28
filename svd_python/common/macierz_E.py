@@ -20,3 +20,5 @@ def stworz_macierz_E(pierwiastki, numrows, numcols):
     for i in range(len(pierwiastki)):
         E[i,i] = pierwiastki[i]
     return E
+
+

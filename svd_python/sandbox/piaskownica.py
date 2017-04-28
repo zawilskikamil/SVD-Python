@@ -1,3 +1,5 @@
+import ctypes
+
 import numpy
 from svd_python.common.wielomiany import *
 
@@ -29,3 +31,15 @@ d = numpy.roots(coeff)
 print(d)
 
 numpy.linalg.cond([[1,2],[1,2]])
+
+
+a = numpy.repeat(0, 50).reshape((5,10))
+
+print(a)
+
+Me = 2
+Ne = 2
+wynik = numpy.repeat(0, (Me * Ne)).reshape((Me, Ne))
+print(wynik)
+
+p
