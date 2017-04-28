@@ -50,7 +50,7 @@ def daj_wektor_wlasny(lamba, macierz):
             if isinstance(wektor[i],numpy.complex):
                 pass
             else:
-                wektor[i] = int(round(wektor[i]))
+                wektor[i] = float(wektor[i])
         wektor.insert(0,1)
         return wektor
 
