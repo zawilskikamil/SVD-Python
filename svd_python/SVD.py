@@ -1,4 +1,4 @@
-from svd_python.common import funkcje, wektory_wlasne
+from svd_python.common import funkcje, wektory_wlasne, macierz_E
 
 A = [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
 B = [[2,1,0], [-6,1,-6], [-3,1,-1]]
@@ -34,13 +34,11 @@ def daj_nam_wynik(matrix):
 
     # =========== do zrobienia ===========
     # 7. Stworzyć macierz ∑ € Rmxn i umieścić na diagonalnej pierwiastki kwadratowe z wartości własnych macierzy Aw (main_matrix).
-    #    czyli:
-    #   [ sqrt(V1)  0         0        ]
-    #   [ 0         sqrt(V2)  0        ]
-    #   [ 0         0         sqrt(V3) ]
-    #   tak??
-    #
-    #
+    numrows = len(A)
+    numcols = len(A[0])
+    E = macierz_E.stworz_macierz_E(wartosci_wlasne, numrows, numcols)
+    print(E)
+
     # 8. Znaleźć r pierwszych wektorów kolumnowych macierzy U € Rmxm
     #    z równań Uj= 1/sqrt(Vj) * A * Vj, gdzie j = 1,2…r.
     #
