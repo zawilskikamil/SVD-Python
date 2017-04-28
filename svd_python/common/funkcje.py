@@ -35,3 +35,10 @@ def oblicz_wyznacznik(m):
     for c in range(len(m)):
         wyznacznik = wyznacznik + ((-1) ** c) * m[0][c] * oblicz_wyznacznik(daj_Minor(m, 0, c))
     return wyznacznik
+
+def licz_R(wartosci_wlasne):
+    r = 0
+    for i in range(len(wartosci_wlasne)):
+        if wartosci_wlasne[i]!=0:
+            r+=1
+    return r
