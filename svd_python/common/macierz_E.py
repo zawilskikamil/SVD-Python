@@ -18,4 +18,3 @@ def stworz_macierz_E(wartosci_wlasne, numrows, numcols):
     return E
 
 
-print(stworz_macierz_zer(2,2))

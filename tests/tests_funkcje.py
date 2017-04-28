@@ -2,7 +2,7 @@ import unittest
 from svd_python.common.funkcje import transpozycja, mnozenie, oblicz_wyznacznik, daj_Minor
 
 
-class TestTranspozycja(unittest.TestCase):
+class TestFunkcje(unittest.TestCase):
     def test_zmiana(self):
         XX = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
         wynik = [[1, 4, 7], [2, 5, 8], [3, 6, 9]]

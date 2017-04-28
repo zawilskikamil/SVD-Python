@@ -56,4 +56,4 @@ def daj_wektor_wlasny(lamba, macierz):
 
 
 
-print(stworz_macierz_wielomianow([[1,2],[1,2]]))
+print(daj([[1,2],[1,2]]))
