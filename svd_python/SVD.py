@@ -47,7 +47,7 @@ def daj_nam_wynik(matrix):
     U = macierz_U.stworz_macierz_U(pierwiastki, A, V, r)
     print(U)
 
-
+    return U, E, V
     # 9. Dodać do macierzy U pozostałe m-r
     #    wektorów wykorzystując proces ortogonalizacji
     #    Grama-Schmidta (i unormować wektory?).

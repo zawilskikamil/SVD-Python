@@ -13,7 +13,7 @@ class TestMacierzE(unittest.TestCase):
     def testMacierzZer(self):
          Me = 2
          Ne = 2
-         wynik = numpy.repeat(0, (Me*Ne)).reshape((Me, Ne))
+         wynik = [[0,0],[0,0]]
          self.assertEqual(stworz_macierz_zer(2,2), wynik, "Źle obliczony pierwiastek!")
 
 

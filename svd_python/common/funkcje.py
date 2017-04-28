@@ -2,6 +2,11 @@ def transpozycja(macierz):
     transponowana = [list(i) for i in zip(*macierz)]
     return transponowana
 
+def transpozycja_wektora(wektor):
+    transponowana = []
+    for i in wektor:
+        transponowana.append([i])
+    return transponowana
 
 def mnozenie(macierz_A, macierz_B):
     wiersz_A = len(macierz_A)
@@ -42,3 +47,5 @@ def licz_R(wartosci_wlasne):
         if wartosci_wlasne[i]!=0:
             r+=1
     return r
+
+
