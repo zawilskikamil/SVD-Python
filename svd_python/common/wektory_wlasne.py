@@ -37,6 +37,18 @@ def daj_wektor_wlasny(lamba, macierz):
         kopia_macierzy[i][i] = kopia_macierzy[i][i] - lamba
     a = numpy.array(kopia_macierzy)
     b = numpy.array([0] * len(kopia_macierzy))
+    #TODO treba dodać warunek x^2 + y^2 = 1
+    # http://stackoverflow.com/questions/8739227/how-to-solve-a-pair-of-nonlinear-equations-using-python
+    # from scipy.optimize import fsolve
+    # import math
+    #
+    # def equations(p):
+    #     x, y = p
+    #     return (x + y ** 2 - 4, math.exp(x) + x * y - 3)
+    #
+    # x, y = fsolve(equations, (1, 1))
+    #
+    # print equations((x, y))
     if funkcje.oblicz_wyznacznik(kopia_macierzy) > 0:
         return numpy.linalg.solve(a, b)
     else:
@@ -46,14 +58,14 @@ def daj_wektor_wlasny(lamba, macierz):
         a = (funkcje.transpozycja(funkcje.transpozycja(a)[1:]))
         narray = (numpy.linalg.lstsq(a, b,0)[0])
         wektor = narray.tolist()
-        for i in range(len(wektor)):
-            if isinstance(wektor[i],numpy.complex):
-                pass
-            else:
-                wektor[i] = float(wektor[i])
+        # for i in range(len(wektor)):
+        #     if isinstance(wektor[i],numpy.complex):
+        #         pass
+        #     else:
+        #         wektor[i] = float(wektor[i])
         wektor.insert(0,1)
         return wektor
 
+print(daj([[2,1],[1,2]]))
 
 
-print(daj([[1,2],[1,2]]))
