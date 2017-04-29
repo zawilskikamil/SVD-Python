@@ -26,13 +26,14 @@ def daj_nam_wynik(matrix):
 
     wartosci_wlasne, V = wektory_wlasne.daj(main_matrix)
 
-    print(wartosci_wlasne)
-    print(V)
+    # print(wartosci_wlasne)
+    # print(V)
 
     # =========== do zrobienia ===========
     # 7. Stworzyć macierz ∑ € Rmxn i umieścić na diagonalnej pierwiastki kwadratowe z wartości własnych macierzy Aw (main_matrix).
     numrows = len(main_matrix)
     numcols = len(main_matrix[0])
+
     pierwiastki = macierz_E.pierwiastki(wartosci_wlasne)
     E = macierz_E.stworz_macierz_E(pierwiastki, numrows, numcols)
     print(E)

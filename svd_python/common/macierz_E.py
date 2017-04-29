@@ -21,4 +21,5 @@ def stworz_macierz_E(pierwiastki, numrows, numcols):
         E[i,i] = pierwiastki[i]
     return E
 
-
+print(pierwiastki([2,3,3,2]))
+print(stworz_macierz_E(pierwiastki([2,3,3,2]),0,2))
