@@ -8,11 +8,18 @@ class TestFunkcje(unittest.TestCase):
         wynik = [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
         self.assertEqual(transpozycja(XX), wynik, "Źle odwrócona macierz")
 
-    def test_mnozenie(self):
+    def test_mnozenieKwadratowe(self):
         A1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
         A2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
         wynik = [[30, 36, 42], [66, 81, 96], [102, 126, 150]]
-        self.assertEqual(mnozenie(A1,A2), wynik, "Zły wyznacznik macierzy")
+        self.assertEqual(mnozenie(A1,A2), wynik, "Zły wynik mnożenia")
+
+    def test_mnozenieNieKwadratowe(self):
+        A1 = [[2,3,4],[1,2,3]]
+        A2 = [[1,2],[3,4],[5,6]]
+        wynik = [[31,40], [22,28]]
+        self.assertEqual(mnozenie(A1, A2), wynik, "Zły wynik mnożenia")
+
 
     def test_wyznacznik(self):
         A = [[5, 1, 3, 3], [32, 3, 9, 9], [6, 6, 7, 8], [4, -1, -2, -9]]
