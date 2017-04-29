@@ -25,6 +25,7 @@ def daj_nam_wynik(matrix):
        main_matrix = TA
 
     wartosci_wlasne, V = wektory_wlasne.daj(main_matrix)
+
     print(wartosci_wlasne)
     print(V)
 

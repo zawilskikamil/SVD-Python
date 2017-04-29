@@ -1,5 +1,5 @@
 import unittest
-from svd_python.common.funkcje import transpozycja, mnozenie, oblicz_wyznacznik, daj_Minor
+from svd_python.common.funkcje import transpozycja, mnozenie, oblicz_wyznacznik, daj_Minor, licz_R
 
 
 class TestFunkcje(unittest.TestCase):
@@ -23,6 +23,13 @@ class TestFunkcje(unittest.TestCase):
         A = [[1, 2, 3], [1,2,3], [1,2,3]]
         wynik = [[1,3],[1,3]]
         self.assertEqual(daj_Minor(A,2,1),wynik,"Źle obliczony rząd macierzy")
+
+    def testLiczR(self):
+        A = [1,2,3,3]
+        wynik = 4
+        self.assertEqual(licz_R(A), wynik, "Źle obliczony R macierzy")
+
+
 
 if __name__ == '__main__':
     unittest.main()

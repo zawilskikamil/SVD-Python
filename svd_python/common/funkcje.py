@@ -47,3 +47,4 @@ def licz_R(wartosci_wlasne):
         if wartosci_wlasne[i]!=0:
             r+=1
     return r
+
