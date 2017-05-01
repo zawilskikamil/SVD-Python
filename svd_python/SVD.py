@@ -1,3 +1,5 @@
+import numpy
+
 from svd_python.common import funkcje, wektory_wlasne, macierz_E, macierz_U
 
 def validate(matrix):
@@ -19,7 +21,7 @@ def daj_nam_wynik(matrix):
     TA = funkcje.mnozenie(T, matrix)
 
     #3. wybieramy macierz
-    if (funkcje.oblicz_wyznacznik(TA) > funkcje.oblicz_wyznacznik(AT)):
+    if (numpy.linalg.matrix_rank(TA) > numpy.linalg.matrix_rank(AT)):
        main_matrix = AT
     else:
        main_matrix = TA
@@ -42,6 +44,7 @@ def daj_nam_wynik(matrix):
     #    z równań Uj= 1/sqrt(Vj) * A * Vj, gdzie j = 1,2…r.
     r = funkcje.licz_R(wartosci_wlasne)
     print(r)
+    # Vt = funkcje.transpozycja(V)
     U = macierz_U.stworz_macierz_U(pierwiastki, matrix, V, r)
     print(U)
 

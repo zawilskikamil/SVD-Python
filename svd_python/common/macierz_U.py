@@ -26,16 +26,16 @@ def oblicz_e(u):
 def stworz_macierz_U(pierwiastki, A, V, r):
     U = []
     # print(1/math.sqrt(pierwiastki[0]))
-    Vt = funkcje.transpozycja(V)
-    for j in range(r):
-        d1 = 1 / math.sqrt(pierwiastki[j])
+    # Vt = funkcje.transpozycja(V)
+    for it in range(r):
+        d1 = 1 / pierwiastki[it]
         a = A
-        b = [Vt[j]]
+        b = V[it]
         c = [0]*len(a)
 
         for i in range(len(a)):
             for j in range(len(a[i])):
-                c[i] = c[i] + (a[i][j] * b[0][j])
+                c[i] = c[i] + (a[i][j] * b[j])
         d2 = c
         for x in range(len(d2)):
             d2[x] = d2[x] * d1
