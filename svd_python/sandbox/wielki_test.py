@@ -3,7 +3,7 @@ import numpy
 from svd_python import SVD
 from svd_python.common import funkcje
 
-A = [[1,2,2], [2,1,2]]
+A = [[1,2,2], [2,1,2], [4,3,2]]
 q = numpy.linalg.svd(A)
 q2 = SVD.daj_nam_wynik(A)
 print("================")
