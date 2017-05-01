@@ -56,18 +56,12 @@ def oblicz_pozostale_u(U,pozostale, r):
      if r == 1 & pozostale == 1:
          U.append(uj)
      else:
-         for i in range(r, (pozostale - r)):
+         for i in range(1, (pozostale - r)):
              uj = uj - e - wektor_razy_liczba(Ut[i], (mnozenie_wek(Ut[i], e)))
-             U.append(uj)
+             if i>=r:
+                U.append(uj)
      return U
 
 U = [[1,2,3],[4,5,6]]
 
 print(oblicz_pozostale_u(U,3,1))
-
-
-
-
-
-
-
