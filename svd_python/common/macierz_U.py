@@ -1,18 +1,16 @@
 from svd_python.common import funkcje
 import math
 
-u = [[1],[1],[0]]
-
 def mnozenie_wek(wektor1,wektor2):
     w = 0
     for i in range(len(wektor1)):
-        w += wektor1[0][i]*wektor2[i][0]
+        w += wektor1[i][0]*wektor2[0][i]
     return w
 
 def wektor_razy_liczba(wektor, liczba):
     w = []
     for y in range(len(wektor)):
-        w.append(w[y][0] * liczba)
+        w.append(wektor[y] * liczba)
     return w
 
 def dlugosc_wektora(u):
@@ -21,27 +19,26 @@ def dlugosc_wektora(u):
     return math.sqrt(wektor)
 
 def oblicz_e(u):
-    dl_wektora = 1/dlugosc_wektora(u)
+    dl_wektora = 1/dlugosc_wektora([u])
     e = wektor_razy_liczba(u,dl_wektora)
     return e
   
 def stworz_macierz_U(pierwiastki, A, V, r):
     U = []
-    print(1/math.sqrt(pierwiastki[0]))
+    # print(1/math.sqrt(pierwiastki[0]))
     Vt = funkcje.transpozycja(V)
     for j in range(r):
         d1 = 1 / math.sqrt(pierwiastki[j])
         a = A
         b = [Vt[j]]
-        c = [[0 for row in range(1)] for col in range(len(a))]
+        c = [0]*len(a)
 
         for i in range(len(a)):
             for j in range(len(a[i])):
-                c[i][0] = c[i][0] + (a[i][j] * b[0][j])
+                c[i] = c[i] + (a[i][j] * b[0][j])
         d2 = c
         for x in range(len(d2)):
-            for y in range(len(d2[x])):
-                d2[x][y] = d2[x][y] * d1
+            d2[x] = d2[x] * d1
         U.append(d2)
     if (r<len(a[0])):
         pozostale = len(a[0]) - r
@@ -52,7 +49,9 @@ def oblicz_pozostale_u(U,pozostale, r):
      Ut = funkcje.transpozycja(U)
      U1 = Ut[0]
      e = oblicz_e(U1)
-     uj = e - (wektor_razy_liczba(U1,(mnozenie_wek(U1,e))))
+     et = funkcje.transpozycja([e])
+     odj = wektor_razy_liczba(U1,(mnozenie_wek(et,[U1])))
+     uj = funkcje.odejmij_wektory(e, odj)
      if r == 1 & pozostale == 1:
          U.append(uj)
      else:
@@ -62,6 +61,4 @@ def oblicz_pozostale_u(U,pozostale, r):
                 U.append(uj)
      return U
 
-U = [[1,2,3],[4,5,6]]
 
-print(oblicz_pozostale_u(U,3,1))

@@ -48,3 +48,11 @@ def licz_R(wartosci_wlasne):
             r+=1
     return r
 
+def odejmij_wektory(v1, v2):
+    out = []
+    if len(v1) != len(v2):
+        raise Exception("rozna dlugosc wektorow")
+    for (a1, a2) in zip(v1, v2):
+        out.append(a1-a2)
+    return out
+
