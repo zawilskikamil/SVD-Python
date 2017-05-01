@@ -1,7 +1,11 @@
 import numpy
 import copy
+
+import scipy.optimize
+
 from svd_python.common import funkcje
 from svd_python.common import wielomiany
+
 
 def daj(macierz):
     m = stworz_macierz_wielomianow(macierz)
@@ -11,49 +15,68 @@ def daj(macierz):
     wartosci_wlasne = numpy.roots(coeff)
     wartosci_wlasne.sort()
     macierz_wartosci_wlasnych = []
-    for w in wartosci_wlasne:
-        macierz_wartosci_wlasnych.append(daj_wektor_wlasny(w,macierz))
+
+    macierz_wartosci_wlasnych = daj_wektor_wlasny(wartosci_wlasne, macierz)
+    # unormowana = numpy.linalg.norm(macierz_wartosci_wlasnych)
+    # for i in range(len(macierz_wartosci_wlasnych)):
+    #     for j in range(len(macierz_wartosci_wlasnych[i])):
+    #         macierz_wartosci_wlasnych[i][j] = macierz_wartosci_wlasnych[i][j]/unormowana
     return wartosci_wlasne, macierz_wartosci_wlasnych
+
 
 def stworz_macierz_wielomianow(macierz):
     macierz_wielomianow = []
     for a in macierz:
         wiersz = []
         for b in a:
-            wiersz.append(wielomiany.niewiadoma(b,0))
+            wiersz.append(wielomiany.niewiadoma(b, 0))
         macierz_wielomianow.append(wiersz)
     return macierz_wielomianow
+
 
 def odejmij_i_lambda(macierz):
     for i in range(len(macierz)):
         q = macierz[i][i]
-        sdf = q - wielomiany.niewiadoma(1,1)
+        sdf = q - wielomiany.niewiadoma(1, 1)
         macierz[i][i] = sdf
     return macierz
 
-def daj_wektor_wlasny(lamba, macierz):
+
+def daj_wektor_wlasny(lamby, macierz):
     kopia_macierzy = copy.deepcopy(macierz)
-    for i in range(len(macierz)):
-        kopia_macierzy[i][i] = kopia_macierzy[i][i] - lamba
-    a = numpy.array(kopia_macierzy)
-    b = numpy.array([0] * len(kopia_macierzy))
-    if funkcje.oblicz_wyznacznik(kopia_macierzy) > 0:
-        return numpy.linalg.solve(a, b)
-    else:
-        b = (funkcje.transpozycja(a)[0])
-        for i in range(len(b)):
-            b[i] = - b[i]
-        a = (funkcje.transpozycja(funkcje.transpozycja(a)[1:]))
-        narray = (numpy.linalg.lstsq(a, b,0)[0])
-        wektor = narray.tolist()
-        for i in range(len(wektor)):
-            if isinstance(wektor[i],numpy.complex):
-                pass
-            else:
-                wektor[i] = float(wektor[i])
-        wektor.insert(0,1)
-        return wektor
+    args = []
+    for l in lamby:
+        k = copy.deepcopy(kopia_macierzy)
+        for i in range(len(macierz)):
+            k[i][i] = k[i][i] - l
+        args.append(k)
+    x0 = [0]*(len(kopia_macierzy[0])*len(lamby))
+    w = scipy.optimize.root(f, x0=x0, args=args, method='lm')
+    return numpy.array_split(w.x, len(lamby))
 
 
+def f(x,args):
+    out = []
+    for alen in range(len(args)):
+        a = args[alen]
+        for j in range(len(a)):
+            o = 0
+            for i in range(len(a[j])):
+                o += (x[i + alen * len(a[0])] * a[j][i])
+            out.append(o)
+        o = -1
+        for i in range(alen * (len(a[0])), alen * len(a[0]) + len(a[0])):
+            o += (x[i] ** 2)
+        out.append(o)
+    for k in range(len(args)):
+        for i in range(k+1,len(args)):
+            o = 0
+            for j in range(len(args[0])):
+                x1 = j + k * len(args[0])
+                x2 = j + i*len(args[0])
+                o += x[x1]*x[x2]
+            out.append(o)
+    return out
 
-print(daj([[1,2],[1,2]]))
+a = daj([[1,2,3],[3,2,3],[1,2,31]])
+print(a)

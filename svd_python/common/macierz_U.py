@@ -24,7 +24,7 @@ def oblicz_e(u):
     dl_wektora = 1/dlugosc_wektora(u)
     e = wektor_razy_liczba(u,dl_wektora)
     return e
-
+  
 def stworz_macierz_U(pierwiastki, A, V, r):
     U = []
     print(1/math.sqrt(pierwiastki[0]))
