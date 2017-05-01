@@ -13,6 +13,7 @@ def daj(macierz):
     w = funkcje.oblicz_wyznacznik(m)
     coeff = list(reversed(w.daj_wspolczynniki()))
     wartosci_wlasne = numpy.roots(coeff)
+    wartosci_wlasne.sort()
     macierz_wartosci_wlasnych = []
 
     macierz_wartosci_wlasnych = daj_wektor_wlasny(wartosci_wlasne, macierz)
@@ -20,7 +21,6 @@ def daj(macierz):
     # for i in range(len(macierz_wartosci_wlasnych)):
     #     for j in range(len(macierz_wartosci_wlasnych[i])):
     #         macierz_wartosci_wlasnych[i][j] = macierz_wartosci_wlasnych[i][j]/unormowana
-    wartosci_wlasne.sort()
     return wartosci_wlasne, macierz_wartosci_wlasnych
 
 
