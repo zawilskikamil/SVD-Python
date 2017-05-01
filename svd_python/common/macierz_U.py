@@ -48,19 +48,22 @@ def stworz_macierz_U(pierwiastki, A, V, r):
 
     return U
 
-# def oblicz_pozostale_u(U,pozostale):
-#     Ut = funkcje.transpozycja(U)
-#     U1 = Ut[0]
-#     e = oblicz_e(U1)
-#     uj = e - wektor_razy_liczba(U1,(mnozenie_wek(U1,e)))
-#     if r==1
-#     for i in range()
-#
-#     return U1
+def oblicz_pozostale_u(U,pozostale, r):
+     Ut = funkcje.transpozycja(U)
+     U1 = Ut[0]
+     e = oblicz_e(U1)
+     uj = e - (wektor_razy_liczba(U1,(mnozenie_wek(U1,e))))
+     if r == 1 & pozostale == 1:
+         U.append(uj)
+     else:
+         for i in range(r, (pozostale - r)):
+             uj = uj - e - wektor_razy_liczba(Ut[i], (mnozenie_wek(Ut[i], e)))
+             U.append(uj)
+     return U
 
 U = [[1,2,3],[4,5,6]]
 
-# print(oblicz_pozostale_u(U))
+print(oblicz_pozostale_u(U,3,1))
 
 
 
