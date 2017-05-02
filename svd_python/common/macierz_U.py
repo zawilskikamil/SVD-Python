@@ -3,8 +3,15 @@ import math
 
 def mnozenie_wek(wektor1,wektor2):
     w = 0
-    for i in range(len(wektor1)):
-        w += wektor1[i][0]*wektor2[0][i]
+    try:
+        if wektor1[0][0] or wektor2[0][0]:
+            w = 0
+    except TypeError:
+        for i in range(len(wektor1)):
+            w += wektor1[i]*wektor2[i][0]
+    else:
+        for i in range(len(wektor1)):
+            w += wektor1[i][0]*wektor2[0][i]
     return w
 
 def wektor_razy_liczba(wektor, liczba):
@@ -42,7 +49,7 @@ def stworz_macierz_U(pierwiastki, A, V, r):
         U.append(d2)
     if (r<len(a[0])):
         pozostale = len(a[0]) - r
-
+        oblicz_pozostale_u(U,pozostale,r)
     return U
 
 def oblicz_pozostale_u(U,pozostale, r):
@@ -52,13 +59,12 @@ def oblicz_pozostale_u(U,pozostale, r):
      et = funkcje.transpozycja([e])
      odj = wektor_razy_liczba(U1,(mnozenie_wek(et,[U1])))
      uj = funkcje.odejmij_wektory(e, odj)
-     if r == 1 & pozostale == 1:
-         U.append(uj)
-     else:
-         for i in range(1, (pozostale - r)):
-             uj = uj - e - wektor_razy_liczba(Ut[i], (mnozenie_wek(Ut[i], e)))
-             if i>=r:
-                U.append(uj)
-     return U
+     for i in range(1, pozostale+r-1):
+        uj = funkcje.odejmij_wektory(uj, wektor_razy_liczba(Ut[i], (mnozenie_wek(Ut[i], et))))
+        if i>=r-1:
+            Ut.append(uj)
+     return funkcje.transpozycja(Ut)
 
 
+U = [[1,0,1],[0, 0.6, -0.8],[0, 0.8, 0.6]]
+print(oblicz_pozostale_u(U,2,3))
