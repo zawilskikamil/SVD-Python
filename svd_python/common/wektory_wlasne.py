@@ -83,5 +83,5 @@ def f(x,args):
             out.append(X[i][j] - Xin[i][j])
     return out
 
-a = daj([[1,2,3],[3,2,3],[1,2,31]])
-print(a)
+# a = daj([[1,2,3],[3,2,3],[1,2,31]])
+# print(a)

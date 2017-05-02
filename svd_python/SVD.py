@@ -6,7 +6,29 @@ def validate(matrix):
     return False
 
 
+
 def daj_nam_wynik(matrix):
+    """algorytm SVD
+
+    funkcja dokonuje rozkładu macierzy wejściowej według algorytmu SVD
+
+    Parameters
+    ----------
+    matrix : {(M, N)} array_like
+        macierz - lista dwuwymiarowa
+
+    Returns
+    U : { (M,M) } array
+        ortonormalna macierz U
+    E : { (M,M) }  array
+        macierz diagonalna
+    Vt : { (N,N) }  array
+        transponowana ortonormalna macierz V
+
+    -------
+
+
+    """
     # jakaś walidacja czy matrix to macierz
     if not validate(matrix):
         pass
@@ -38,15 +60,15 @@ def daj_nam_wynik(matrix):
 
     pierwiastki = macierz_E.pierwiastki(wartosci_wlasne)
     E = macierz_E.stworz_macierz_E(pierwiastki, numrows, numcols)
-    print(E)
+    # print(E)
 
     # 8. Znaleźć r pierwszych wektorów kolumnowych macierzy U € Rmxm
     #    z równań Uj= 1/sqrt(Vj) * A * Vj, gdzie j = 1,2…r.
     r = funkcje.licz_R(wartosci_wlasne)
-    print(r)
+    # print(r)
     # Vt = funkcje.transpozycja(V)
     U = macierz_U.stworz_macierz_U(pierwiastki, matrix, V, r)
-    print(U)
+    # print(U)
     U = numpy.transpose(U)
     return U, E, V
     # 9. Dodać do macierzy U pozostałe m-r

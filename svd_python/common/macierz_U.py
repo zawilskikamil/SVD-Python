@@ -66,5 +66,5 @@ def oblicz_pozostale_u(U,pozostale, r):
      return funkcje.transpozycja(Ut)
 
 
-U = [[1,0,1],[0, 0.6, -0.8],[0, 0.8, 0.6]]
-print(oblicz_pozostale_u(U,2,3))
+# U = [[1,0,1],[0, 0.6, -0.8],[0, 0.8, 0.6]]
+# print(oblicz_pozostale_u(U,2,3))
