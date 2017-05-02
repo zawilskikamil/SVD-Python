@@ -47,7 +47,7 @@ def daj_nam_wynik(matrix):
     # Vt = funkcje.transpozycja(V)
     U = macierz_U.stworz_macierz_U(pierwiastki, matrix, V, r)
     print(U)
-
+    U = numpy.transpose(U)
     return U, E, V
     # 9. Dodać do macierzy U pozostałe m-r
     #    wektorów wykorzystując proces ortogonalizacji

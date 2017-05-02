@@ -15,8 +15,8 @@ def daj(macierz):
     wartosci_wlasne = numpy.roots(coeff)
     macierz_wartosci_wlasnych = []
 
-    macierz_wartosci_wlasnych = daj_wektor_wlasny(wartosci_wlasne, macierz)
-    wartosci_wlasne.sort()
+    macierz_wartosci_wlasnych = daj_wektory_wlasne(wartosci_wlasne, macierz)
+    # wartosci_wlasne.sort()
     return wartosci_wlasne, macierz_wartosci_wlasnych
 
 
@@ -38,7 +38,7 @@ def odejmij_i_lambda(macierz):
     return macierz
 
 
-def daj_wektor_wlasny(lamby, macierz):
+def daj_wektory_wlasne(lamby, macierz):
     kopia_macierzy = copy.deepcopy(macierz)
     args = []
     for l in lamby:
@@ -46,7 +46,9 @@ def daj_wektor_wlasny(lamby, macierz):
         for i in range(len(macierz)):
             k[i][i] = k[i][i] - l
         args.append(k)
-    x0 = [0]*(len(kopia_macierzy[0])*len(lamby))
+    x0 = numpy.random.rand(len(kopia_macierzy[0])*len(lamby))
+    # for i in range(len(x0)):
+    #     x0[i] = i
     w = scipy.optimize.root(f, x0=x0, args=args, method='lm')
     return numpy.array_split(w.x, len(lamby))
 
@@ -58,7 +60,8 @@ def f(x,args):
         for j in range(len(a)):
             o = 0
             for i in range(len(a[j])):
-                o += (x[i + alen * len(a[0])] * a[j][i])
+                qwe = i + alen * len(a[0])
+                o += (x[qwe] * a[j][i])
             out.append(o)
         o = -1
         for i in range(alen * (len(a[0])), alen * len(a[0]) + len(a[0])):
@@ -72,6 +75,12 @@ def f(x,args):
                 x2 = j + i*len(args[0])
                 o += x[x1]*x[x2]
             out.append(o)
+    X = numpy.array_split(x, len(args))
+    Xt = numpy.transpose(X)
+    Xin = numpy.linalg.inv(Xt)
+    for i in range(len(Xin)):
+        for j in range(len(Xin[i])):
+            out.append(X[i][j] - Xin[i][j])
     return out
 
 a = daj([[1,2,3],[3,2,3],[1,2,31]])
