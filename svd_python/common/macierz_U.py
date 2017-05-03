@@ -49,7 +49,7 @@ def stworz_macierz_U(pierwiastki, A, V, r):
         U.append(d2)
     if (r<len(a[0])):
         pozostale = len(a[0]) - r
-        oblicz_pozostale_u(U,pozostale,r)
+        U = oblicz_pozostale_u(U,pozostale,r)
     return U
 
 def oblicz_pozostale_u(U,pozostale, r):
@@ -63,7 +63,7 @@ def oblicz_pozostale_u(U,pozostale, r):
         uj = funkcje.odejmij_wektory(uj, wektor_razy_liczba(Ut[i], (mnozenie_wek(Ut[i], et))))
         if i>=r-1:
             Ut.append(uj)
-     return funkcje.transpozycja(Ut)
+     return Ut
 
 
 # U = [[1,0,1],[0, 0.6, -0.8],[0, 0.8, 0.6]]
