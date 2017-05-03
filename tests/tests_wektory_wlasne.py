@@ -1,5 +1,5 @@
 import unittest
-from svd_python.common.wektory_wlasne import daj, stworz_macierz_wielomianow,odejmij_i_lambda,daj_wektory_wlasne
+from svd_python.common.macierz_Vt import stworz_macierz_Vt, stworz_macierz_wielomianow,odejmij_i_lambda,daj_wektory_wlasne
 
 class TestWektoryWlasne(unittest.TestCase):
 

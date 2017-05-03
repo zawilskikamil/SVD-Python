@@ -1,6 +1,6 @@
 import numpy
 
-from svd_python.common import funkcje, wektory_wlasne, macierz_E, macierz_U
+from svd_python.common import funkcje, macierz_Vt, macierz_E, macierz_U
 
 def daj_nam_wynik(matrix):
     """algorytm SVD
@@ -25,7 +25,7 @@ def daj_nam_wynik(matrix):
     else:
        main_matrix = TA
 
-    wartosci_wlasne, V = wektory_wlasne.daj(main_matrix)
+    wartosci_wlasne, V = macierz_Vt.stworz_macierz_Vt(main_matrix)
 
     numrows = len(main_matrix)
     numcols = len(main_matrix[0])

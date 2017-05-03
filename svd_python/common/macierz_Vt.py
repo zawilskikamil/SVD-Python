@@ -7,7 +7,15 @@ from svd_python.common import funkcje
 from svd_python.common import wielomiany
 
 
-def daj(macierz):
+def stworz_macierz_Vt(macierz):
+    """funkca zwraca macierz Vt - ortonotmalną macierz wektorów włąsnych macierzy wejsicowej
+
+        Args:
+          macierz ([[num]]): macierz
+
+        Returns:
+          [[num]]: transponowana macierz wektorów własnych
+    """
     m = stworz_macierz_wielomianow(macierz)
     m = odejmij_i_lambda(m)
     w = funkcje.oblicz_wyznacznik(m)
