@@ -1,5 +1,8 @@
 import copy
-# liczba ax^n
+"""
+Plik zawiera klasy robocze niewiadomej oraz wielomianu,
+które pozwalają na tworzenie nieliniowego układu równań.
+"""
 class niewiadoma():
     def __init__(self, a, n):
         self.a = a
@@ -114,6 +117,12 @@ class wielomian():
     # odpowiednio dla ax^0 + bx^1 + cx^2 + ...
     #  [a,b,c]
     def daj_wspolczynniki(self):
+        """zwraca liste wspolczynnikow
+        odpowiednio dla ax^0 + bx^1 + cx^2 + ...
+        [a,b,c]
+        :return:
+         [int]: lista współczynników
+        """
         najwiekszy = 0;
         for w in self.liczby:
             if najwiekszy < w.n:

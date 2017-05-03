@@ -21,10 +21,8 @@ def stworz_macierz_Vt(macierz):
     w = funkcje.oblicz_wyznacznik(m)
     coeff = list(reversed(w.daj_wspolczynniki()))
     wartosci_wlasne = numpy.roots(coeff)
-    macierz_wartosci_wlasnych = []
 
     macierz_wartosci_wlasnych = daj_wektory_wlasne(wartosci_wlasne, macierz)
-    # wartosci_wlasne.sort()
     return wartosci_wlasne, macierz_wartosci_wlasnych
 
 

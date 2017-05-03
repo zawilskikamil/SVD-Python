@@ -31,6 +31,16 @@ def oblicz_e(u):
     return e
   
 def stworz_macierz_U(pierwiastki, A, V, r):
+    """funkca zwraca macierz U
+            Args:
+              pierwiastki ([num]): pierwiastki wartości własnych
+              A ([[num]]): macierz
+              V ([[num]]): macierz
+              r (num): liczba niezerowych wartości własnych
+
+            Returns:
+              [[num]]: macierz U
+    """
     U = []
     # print(1/math.sqrt(pierwiastki[0]))
     # Vt = funkcje.transpozycja(V)
