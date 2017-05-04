@@ -32,12 +32,12 @@ Algorytm krok po kroku
 
 4.	Dla macierzy Aw obliczyć wartości własne macierzy:
       
-    + Obliczyć macierz Aλ=Aw – λI, gdzie λ to niewiadoma, a I to macierz jednostkowa
++ Obliczyć macierz Aλ=Aw – λI, gdzie λ to niewiadoma, a I to macierz jednostkowa
       
-    + Wyznaczyć równanie charakterystyczne macierzy (policzyć wyznacznik). 
-        Obliczyć pierwiastki przyrównując równanie do zera.
++ Wyznaczyć równanie charakterystyczne macierzy (policzyć wyznacznik). 
+  Obliczyć pierwiastki przyrównując równanie do zera.
       
-    + Wyliczone pierwiastki to te wartości własne (mogą wyjść w liczbach zespolonych).
++ Wyliczone pierwiastki to te wartości własne (mogą wyjść w liczbach zespolonych).
 
 5.  Określić r, czyli liczbę niezerowych wartości własnych macierzy Aw.
   
