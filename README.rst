@@ -14,11 +14,11 @@ Projekt będzie polegał na implementacji algorytmu SVD (Singular Value Decompos
 Grupa
 =====
 
-+Martyna Mazurkiewicz
++ Martyna Mazurkiewicz
 
-+Mateusz Lepa
++ Mateusz Lepa
 
-+Kamil Zawilski
++ Kamil Zawilski
 
 Algorytm krok po kroku
 ======================
